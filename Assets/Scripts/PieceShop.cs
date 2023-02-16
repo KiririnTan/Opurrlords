@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-//test
-
 public class PieceShop : MonoBehaviour
 {
     static readonly int PIECES_X_POS_START = -10;
