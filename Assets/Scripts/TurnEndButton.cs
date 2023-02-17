@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class TurnEndButton : MonoBehaviour
 {
+    public TurnController turnController;
+
     void Start()
     {
 
@@ -16,9 +18,19 @@ public class TurnEndButton : MonoBehaviour
 
     void OnMouseDown()
     {
-        GameObject
+        if (turnController == null)
+        {
+            //this code will probably never be called.
+
+            GameObject
             .Find("TurnController")
             .GetComponent<TurnController>()
             .NextTurn();
+
+        }
+        else
+        {
+            turnController.NextTurn();
+        }
     }
 }

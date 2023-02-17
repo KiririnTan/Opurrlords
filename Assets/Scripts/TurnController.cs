@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class TurnController : MonoBehaviour
 {
@@ -9,6 +10,21 @@ public class TurnController : MonoBehaviour
     public int Turn { get; private set; } = 1;
 
     private int prevTurn = 0;
+
+
+
+    //ui
+    public TMP_Text turnText;
+    public TMP_Text moneyText;
+    public TMP_Text experienceText;
+
+    void Start()
+    {
+        var player = GameObject
+        .Find("Player")
+        .GetComponent<Player>();
+        updateUI(player);
+    }
 
     void Update()
     {
@@ -43,5 +59,15 @@ public class TurnController : MonoBehaviour
             .GetComponent<Player>();
         player.money += 5;
         player.experience += 1;
+
+        //ui
+        updateUI(player);
+    }
+
+    public void updateUI(Player player)
+    {
+        turnText.text = "Turn: " + this.Turn.ToString();
+        moneyText.text = "Money: " + player.money.ToString();
+        experienceText.text = "Experience: " + player.experience.ToString();
     }
 }
